@@ -8,7 +8,7 @@
 
 	/**
     *   Função original do geoplugin para detectar bots, e evitar a sobrecarga do servidor em planos free
-    *   @param chamado pelo htaccess
+    *   @param $user_agent string recebe o valor do navegador ou cURL
     *   @return booleano
     * 	@author geoplugin.net
     **/
