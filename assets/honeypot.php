@@ -13,10 +13,12 @@
     * 	@author geoplugin.net
     **/
     function is_bot($user_agent) {
- 
+ 	
+	// Expressão regular para testar se o UserAgent casa com algum dos valores
         $botRegexPattern = "(googlebot\/|Googlebot\-Mobile|Googlebot\-Image|Google favicon|Mediapartners\-Google|bingbot|slurp|java|wget|curl|Commons\-HttpClient|Python\-urllib|libwww|httpunit|nutch|phpcrawl|msnbot|jyxobot|FAST\-WebCrawler|FAST Enterprise Crawler|biglotron|teoma|convera|seekbot|gigablast|exabot|ngbot|ia_archiver|GingerCrawler|webmon |httrack|webcrawler|grub\.org|UsineNouvelleCrawler|antibot|netresearchserver|speedy|fluffy|bibnum\.bnf|findlink|msrbot|panscient|yacybot|AISearchBot|IOI|ips\-agent|tagoobot|MJ12bot|dotbot|woriobot|yanga|buzzbot|mlbot|yandexbot|purebot|Linguee Bot|Voyager|CyberPatrol|voilabot|baiduspider|citeseerxbot|spbot|twengabot|postrank|turnitinbot|scribdbot|page2rss|sitebot|linkdex|Adidxbot|blekkobot|ezooms|dotbot|Mail\.RU_Bot|discobot|heritrix|findthatfile|europarchive\.org|NerdByNature\.Bot|sistrix crawler|ahrefsbot|Aboundex|domaincrawler|wbsearchbot|summify|ccbot|edisterbot|seznambot|ec2linkfinder|gslfbot|aihitbot|intelium_bot|facebookexternalhit|yeti|RetrevoPageAnalyzer|lb\-spider|sogou|lssbot|careerbot|wotbox|wocbot|ichiro|DuckDuckBot|lssrocketcrawler|drupact|webcompanycrawler|acoonbot|openindexspider|gnam gnam spider|web\-archive\-net\.com\.bot|backlinkcrawler|coccoc|integromedb|content crawler spider|toplistbot|seokicks\-robot|it2media\-domain\-crawler|ip\-web\-crawler\.com|siteexplorer\.info|elisabot|proximic|changedetection|blexbot|arabot|WeSEE:Search|niki\-bot|CrystalSemanticsBot|rogerbot|360Spider|psbot|InterfaxScanBot|Lipperhey SEO Service|CC Metadata Scaper|g00g1e\.net|GrapeshotCrawler|urlappendbot|brainobot|fr\-crawler|binlar|SimpleCrawler|Livelapbot|Twitterbot|cXensebot|smtbot|bnf\.fr_bot|A6\-Indexer|ADmantX|Facebot|Twitterbot|OrangeBot|memorybot|AdvBot|MegaIndex|SemanticScholarBot|ltx71|nerdybot|xovibot|BUbiNG|Qwantify|archive\.org_bot|Applebot|TweetmemeBot|crawler4j|findxbot|SemrushBot|yoozBot|lipperhey|y!j\-asr|Domain Re\-Animator Bot|AddThis|YisouSpider|BLEXBot|YandexBot|SurdotlyBot|AwarioRssBot|FeedlyBot|Barkrowler|Gluten Free Crawler|Cliqzbot)";      
         return preg_match("/{$botRegexPattern}/", $user_agent);
-
+	    
+	// Verifica se é um bot, passando o $_SERVER['HTTP_USER_AGENT'], como parâmetro
         if ( !is_bot($_SERVER['HTTP_USER_AGENT']) ) {
             return true;
         } else {
@@ -36,8 +38,8 @@
 	    // variável que vai armazenar o nível do log (INFO, WARNING ou ERROR)
 	    $levelStr = '';
 	 
-	    // caso o $level seja
-	    switch ( $level ){
+	    // caso o $nivel seja
+	    switch ( $nivel ){
 	        case 'info':
 	            // nível de informação
 	            $levelStr = 'INFO';
@@ -78,12 +80,12 @@
     // SE não for um bot, consulta o geoplugin
     if($bot==0){
 
-		// lê o json diretamente dos dados enviados no POST (input)
-		$json = file_get_contents('http://www.geoplugin.net/json.gp');
-		$obj = json_decode($json);
+	    // lê o json diretamente dos dados enviados no POST (input)
+	    $json = file_get_contents('http://www.geoplugin.net/json.gp');
+	    $obj = json_decode($json);
 
-		// Retorna os dados do array json em variáveis php
-		$ip = $obj->geoplugin_request;
+	    // Retorna os dados do array json em variáveis php
+	    $ip = $obj->geoplugin_request;
 	    $cidade = $obj->geoplugin_city;
 	    $uf = $obj->geoplugin_regionCode;
 	    $ufNome = $obj->geoplugin_regionName;
@@ -107,7 +109,7 @@
     	logMsg("Um Bot, Webcrawler ou Spammer está rastreando o sistema");
     }
     
-    // Salva os dados do Log
+        // Salva os dados do Log
 	logMsg("Referência : ".$_SERVER['HTTP_REFERER']);// link de referência do acesso caso haja
 	logMsg("Agente : ".$user_agent);
 	logMsg("IP : ".$ip);
