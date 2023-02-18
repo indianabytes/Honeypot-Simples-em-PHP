@@ -6,7 +6,7 @@
  *
  *************************************************************************************/
 
-	/**
+    /**
     *   Função original do geoplugin para detectar bots, e evitar a sobrecarga do servidor em planos free
     *   @param $user_agent string recebe o valor do navegador ou cURL
     *   @return booleano
@@ -26,7 +26,7 @@
         }
     }
 	
-	/**
+    /**
     *   Gera um arquivo de Log com níveis críticos - original no Imasters 
     *   @param $mensagem string que recebe o valor da mensagem do log
     *   @param $nivel string que recebe o valor do nível crítico da mensagem do log
