@@ -19,3 +19,7 @@ Descomente as linhas do arquivo htaccess.txt e renomeie-o para .htaccess
 #Order allow,deny
 #allow from all
 ```
+
+Renomeie o arquivo honeypot.php para index.php;
+Envie para o seu servidor;
+Teste tentando acessar o diretório pelo navegador;
